@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+import { projects } from '../data/projects';
+
+const featured = projects.slice(0, 2);
+---
+
+<BaseLayout
+  title={`${SITE.name} — ${SITE.tagline}`}
+  description={SITE.description}
+>
+  <h1>Hi, I'm {SITE.name.split(' ')[0]}.</h1>
+  <p class="muted">
+    {SITE.tagline}. Welcome to my corner of the internet — here you'll find my
+    work, a bit about me, and how to reach me.
+  </p>
+
+  <h2>Featured work</h2>
+  {featured.map((p) => (
+    <article class="card">
+      <h3>{p.url ? <a href={p.url}>{p.title}</a> : p.title}</h3>
+      <p>{p.description}</p>
+      <div class="tags">{p.tags.map((t) => <span>{t}</span>)}</div>
+    </article>
+  ))}
+  <p><a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/projects/`}>See all projects →</a></p>
+</BaseLayout>

@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+---
+
+<BaseLayout title={`Page not found — ${SITE.name}`} description="This page does not exist.">
+  <h1>404 — Page not found</h1>
+  <p class="muted">That page doesn't exist. <a href={import.meta.env.BASE_URL}>Head back home</a>.</p>
+</BaseLayout>

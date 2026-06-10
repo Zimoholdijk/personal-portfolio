@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+---
+
+<BaseLayout
+  title={`About — ${SITE.name}`}
+  description={`About ${SITE.name}: background, skills, and what I'm working on.`}
+>
+  <h1>About me</h1>
+  <p>
+    Replace this with your story: who you are, what you do, and what you care
+    about. Aim for 2–4 short paragraphs — search engines reward substantive,
+    original text, and visitors reward brevity.
+  </p>
+  <h2>Skills</h2>
+  <p class="muted">List your core skills, tools, and areas of expertise here.</p>
+  <h2>Now</h2>
+  <p class="muted">What you're currently working on or learning.</p>
+</BaseLayout>

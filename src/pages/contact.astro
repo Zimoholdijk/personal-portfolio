@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+
+const socials = Object.entries(SITE.socials).filter(([, url]) => url);
+
+// GitHub Pages is static-only, so the form posts to Web3Forms (free).
+// To activate: get a free access key at https://web3forms.com (just your
+// email, no account), paste it below, and submissions land in your inbox.
+// Until a key is set, the form is hidden and only the mailto link shows.
+const WEB3FORMS_ACCESS_KEY = '';
+---
+
+<BaseLayout
+  title={`Contact — ${SITE.name}`}
+  description={`Get in touch with ${SITE.name} — email and social links.`}
+>
+  <h1>Contact</h1>
+  <p>
+    Reach me by email at
+    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>{
+      WEB3FORMS_ACCESS_KEY ? ' or use the form below.' : '.'
+    }
+  </p>
+
+  {WEB3FORMS_ACCESS_KEY && (
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+      <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+      <label>
+        Name
+        <input type="text" name="name" required autocomplete="name" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Send message</button>
+    </form>
+  )}
+
+  {socials.length > 0 && (
+    <>
+      <h2>Elsewhere</h2>
+      <ul>
+        {socials.map(([name, url]) => (
+          <li>
+            <a href={url} rel="me">{name.charAt(0).toUpperCase() + name.slice(1)}</a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</BaseLayout>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    max-width: 28rem;
+  }
+  .contact-form label {
+    display: grid;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font: inherit;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+  }
+  .contact-form button {
+    font: inherit;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    padding: 0.65rem 1.25rem;
+    cursor: pointer;
+    justify-self: start;
+  }
+  .contact-form button:hover { opacity: 0.9; }
+</style>

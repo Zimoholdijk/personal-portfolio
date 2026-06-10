@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+import { projects } from '../data/projects';
+
+// ItemList schema helps search engines understand this is a portfolio listing.
+const listSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: projects.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.title,
+    ...(p.url ? { url: p.url } : {}),
+  })),
+};
+---
+
+<BaseLayout
+  title={`Projects — ${SITE.name}`}
+  description={`Selected projects and work by ${SITE.name}.`}
+  schema={listSchema}
+>
+  <h1>Projects</h1>
+  <p class="muted">A selection of things I've built.</p>
+
+  {projects.map((p) => (
+    <article class="card">
+      <h3>{p.url ? <a href={p.url}>{p.title}</a> : p.title}</h3>
+      <p>{p.description}</p>
+      <div class="tags">{p.tags.map((t) => <span>{t}</span>)}</div>
+      {p.repo && <p style="margin-top:0.6rem"><a href={p.repo}>Source code</a></p>}
+    </article>
+  ))}
+</BaseLayout>
