@@ -8,6 +8,6 @@ import sitemap from '@astrojs/sitemap';
 //    `base: '/<repo-name>'` and the site will live at
 //    https://<your-username>.github.io/<repo-name>
 export default defineConfig({
-  site: 'https://zimoholdijk.com',
+  site: 'https://www.zimoholdijk.com',
   integrations: [sitemap()],
 });
