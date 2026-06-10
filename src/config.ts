@@ -6,7 +6,7 @@ export const SITE = {
   // 150-160 characters. This is your Google snippet — make it count.
   description:
     'Personal portfolio of Zimo Holdijk — projects, work, and ways to get in touch.',
-  email: 'zimoholdijk@gmail.com',
+  email: 'hello@zimoholdijk.com',
   // Used for JSON-LD sameAs links (helps Google connect your profiles).
   socials: {
     github: 'https://github.com/zimoholdijk',
