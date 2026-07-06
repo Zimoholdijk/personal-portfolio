@@ -1,9 +1,19 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
 import { SITE } from '../config';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<BaseLayout title={`Page not found — ${SITE.name}`} description="This page does not exist.">
-  <h1>404 — Page not found</h1>
-  <p class="muted">That page doesn't exist. <a href={import.meta.env.BASE_URL}>Head back home</a>.</p>
-</BaseLayout>
+<SiteLayout title={`Page not found — ${SITE.name}`} description="This page does not exist.">
+  <section class="endcta pagetop">
+    <div class="wrap">
+      <span class="hand-k">well, this is awkward</span>
+      <h2>404.</h2>
+      <div class="row">
+        <a class="cta" href={`${base}/`}>Head back home →</a>
+        <a class="ghost" href={`${base}/projects/`}>See the projects</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

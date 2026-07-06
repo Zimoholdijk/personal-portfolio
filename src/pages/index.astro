@@ -1,30 +1,116 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
 import { SITE } from '../config';
 import { projects } from '../data/projects';
+import { toWorkCards } from '../lib/work';
 
-const featured = projects.slice(0, 3);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (p: string) => `${base}${p}`;
+const projectsUrl = `${base}/projects/`;
+
+const firstName = SITE.name.split(' ')[0];
+const work = toWorkCards(projects, base);
 ---
 
-<BaseLayout
-  title={`${SITE.name} — ${SITE.tagline}`}
-  description={SITE.description}
->
-  <h1>Hi, I'm {SITE.name.split(' ')[0]}.</h1>
-  <p>
-    I'm a Lead Product Builder at <strong>Brthrs Agency</strong>, a Lovable
-    partner agency. I went from hobbyist to building AI-powered products full
-    time in under a year. I build things because I can't help myself — for
-    clients, for my family, and for my community. Here's the proof.
-  </p>
+<SiteLayout title={`${SITE.name} — ${SITE.tagline}`} description={SITE.description}>
+  <header class="hero" id="top">
+    <div class="wrap hero__grid">
+      <div>
+        <h1 class="reveal">
+          Hi <span class="wave">👋</span> — I design and build AI products people actually
+          <span class="squig">use<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 14 2, 26 8 T 50 8 T 74 8 T 98 8 T 122 8 T 146 8 T 170 8 T 196 8"></path></svg></span>.
+        </h1>
+        <p class="hero__lead reveal" data-d="1">
+          I'm {firstName}, <b>Lead Product Builder at Brthrs Agency</b>. I build
+          AI-powered products full time — for clients who pay me, for my family
+          who humors me, and for my community who inspires me. <b>Here's the proof.</b>
+        </p>
+        <div class="hero__cta reveal" data-d="2">
+          <a class="cta" href="#work">See what I've made ↓</a>
+          <a class="ghost" href="#about">The story</a>
+        </div>
+      </div>
+      <div class="hero__photo reveal" data-d="2">
+        <span class="ring" aria-hidden="true"></span>
+        <img class="hero__img" src={asset('/zimo.jpeg')} alt={SITE.name} />
+        <span class="note">that's me!<svg viewBox="0 0 46 34"><path d="M40 4 C 30 22, 18 26, 6 22 M 13 16 L 5 22 L 12 29"></path></svg></span>
+      </div>
+    </div>
+  </header>
 
-  <h2>Featured work</h2>
-  {featured.map((p) => (
-    <article class="card">
-      <h3>{p.url ? <a href={p.url}>{p.title}</a> : p.title}</h3>
-      <p>{p.description}</p>
-      <div class="tags">{p.tags.map((t) => <span>{t}</span>)}</div>
-    </article>
-  ))}
-  <p><a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/projects/`}>See all projects →</a></p>
-</BaseLayout>
+  <svg class="wavy" viewBox="0 0 1440 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 13 Q 30 2, 60 13 T 120 13 T 180 13 T 240 13 T 300 13 T 360 13 T 420 13 T 480 13 T 540 13 T 600 13 T 660 13 T 720 13 T 780 13 T 840 13 T 900 13 T 960 13 T 1020 13 T 1080 13 T 1140 13 T 1200 13 T 1260 13 T 1320 13 T 1380 13 T 1440 13"></path></svg>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="shead reveal"><h2>Things I've built</h2><span class="hand">a few of them ↓</span></div>
+      <div class="works">
+        {work.map((p) => (
+          <a class="work reveal" href={p.href} style={`--c:${p.color};`}>
+            <div class="work__media"><span>{p.media}</span></div>
+            <div class="work__body">
+              <span class="work__name">{p.title}</span>
+              <span class="work__for">{p.forText}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="work__more reveal"><a href={projectsUrl}>See all projects →</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="about" style="padding-top:0;">
+    <div class="wrap">
+      <div class="about reveal">
+        <div class="about__grid">
+          <div class="about__photo">
+            <span class="sticker">hello again</span>
+            <img class="about__img" src={asset('/zimo.jpeg')} alt={SITE.name} />
+          </div>
+          <div>
+            <h2>I design and build AI-powered products end to end.</h2>
+            <p>
+              I'm {firstName}, Lead Product Builder at <b>Brthrs Agency</b>, a
+              Lovable partner. I sketch the idea, design the experience, write
+              the code, and ship it — no handoffs.
+            </p>
+            <p>
+              The same energy goes into every project, whether it's an internal
+              tool that turns days of work into 20 minutes, a marketplace that
+              keeps good toys out of landfill, or a journaling app for new
+              mothers. The shortest line between a real problem and something
+              people can use.
+            </p>
+            <div class="facts">
+              <span class="fact">Lead Product Builder @ Brthrs</span>
+              <span class="fact">{projects.length}+ products shipped</span>
+              <span class="fact">clients · family · community</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services" style="padding-top:0;">
+    <div class="wrap">
+      <div class="shead reveal"><h2>What I can do for you</h2><span class="hand">the practical bit →</span></div>
+      <div class="svcs">
+        <div class="svc reveal"><span class="doodle">~ one</span><h3>AI Product Design</h3><p>Turning a vague itch into a sharp, usable product with AI at its core.</p></div>
+        <div class="svc reveal" data-d="1"><span class="doodle">~ two</span><h3>Full-stack Build</h3><p>The code that makes it real — front to back, no handoffs.</p></div>
+        <div class="svc reveal" data-d="2"><span class="doodle">~ three</span><h3>Rapid Prototyping</h3><p>Idea to clickable in days, so you can feel it before you fund it.</p></div>
+        <div class="svc reveal" data-d="3"><span class="doodle">~ four</span><h3>Ship &amp; Iterate</h3><p>Launch is the start. I measure, learn, and make it better.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="endcta" id="contact">
+    <div class="wrap">
+      <span class="hand-k reveal">got a problem worth building?</span>
+      <h2 class="reveal" data-d="1">Let's make <span class="squig">something<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 14 2, 26 8 T 50 8 T 74 8 T 98 8 T 122 8 T 146 8 T 170 8 T 196 8"></path></svg></span>.</h2>
+      <div class="row reveal" data-d="2">
+        <a class="cta" href={`mailto:${SITE.email}`}>{SITE.email} →</a>
+        <a class="ghost" href="#top">Back to top</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

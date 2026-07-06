@@ -1,0 +1,120 @@
+---
+import { SITE } from '../config';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+  schema?: object;
+}
+
+const {
+  title,
+  description = SITE.description,
+  ogImage = SITE.ogImage,
+  ogType = 'website',
+  schema,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (p: string) => `${base}${p}`;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(asset(ogImage), Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.name,
+  url: Astro.site?.toString(),
+  email: `mailto:${SITE.email}`,
+  jobTitle: SITE.tagline,
+  sameAs: Object.values(SITE.socials).filter(Boolean),
+};
+
+// Nav anchors are absolute-to-home so they work from sub-pages too:
+// on the homepage they scroll; on /projects they navigate home then scroll.
+const nav = [
+  { label: 'Work', href: `${base}/#work` },
+  { label: 'Projects', href: `${base}/projects/` },
+  { label: 'About', href: `${base}/#about` },
+  { label: 'Contact', href: `${base}/#contact` },
+];
+---
+
+<!doctype html>
+<html lang={SITE.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="author" content={SITE.name} />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <link rel="icon" type="image/svg+xml" href={asset('/favicon.svg')} />
+    <link rel="sitemap" href={asset('/sitemap-index.xml')} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Caveat:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+
+  <body>
+    <nav class="nav">
+      <a class="brand" href={`${base}/`}>
+        <span class="face"><img src={asset('/zimo.jpeg')} alt="" width="34" height="34" /></span>
+        <span>{SITE.name}</span>
+      </a>
+      <div class="links">
+        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+        <a class="cta" href={`mailto:${SITE.email}`}>Say hi →</a>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="footer wrap">
+      <span>© {new Date().getFullYear()} — {SITE.name}. Made with snacks &amp; stubbornness.</span>
+      <div class="socials">
+        {SITE.socials.github && <a href={SITE.socials.github} target="_blank" rel="noopener">GitHub</a>}
+        {SITE.socials.linkedin && <a href={SITE.socials.linkedin} target="_blank" rel="noopener">LinkedIn</a>}
+        {SITE.socials.twitter && <a href={SITE.socials.twitter} target="_blank" rel="noopener">Twitter</a>}
+        <a href={`mailto:${SITE.email}`}>Email</a>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var nav = document.querySelector('.nav');
+        if (nav) addEventListener('scroll', function () { nav.classList.toggle('scrolled', scrollY > 40); }, { passive: true });
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+  </body>
+</html>
