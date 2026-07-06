@@ -12,18 +12,19 @@ const firstName = SITE.name.split(' ')[0];
 const work = toWorkCards(projects, base);
 ---
 
-<SiteLayout title={`${SITE.name} — ${SITE.tagline}`} description={SITE.description}>
+<SiteLayout title={`${SITE.name} · ${SITE.tagline}`} description={SITE.description}>
   <header class="hero" id="top">
     <div class="wrap hero__grid">
       <div>
         <h1 class="reveal">
-          Hi <span class="wave">👋</span> — I design and build AI products people actually
+          Hi <span class="wave">👋</span>, I design and build AI products people actually
           <span class="squig">use<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 14 2, 26 8 T 50 8 T 74 8 T 98 8 T 122 8 T 146 8 T 170 8 T 196 8"></path></svg></span>.
         </h1>
         <p class="hero__lead reveal" data-d="1">
-          I'm {firstName}, <b>Lead Product Builder at Brthrs Agency</b>. I build
-          AI-powered products full time — for clients who pay me, for my family
-          who humors me, and for my community who inspires me. <b>Here's the proof.</b>
+          I'm {firstName}, <b>Lead Product Builder at Brthrs Agency</b>, where I
+          build AI-powered products full time. I make them for the clients I work
+          with, for my family, and for the community around me, and below is some
+          of what I've made.
         </p>
         <div class="hero__cta reveal" data-d="2">
           <a class="cta" href="#work">See what I've made ↓</a>
@@ -67,18 +68,17 @@ const work = toWorkCards(projects, base);
             <img class="about__img" src={asset('/zimo.jpeg')} alt={SITE.name} />
           </div>
           <div>
-            <h2>I design and build AI-powered products end to end.</h2>
+            <h2>I take AI-powered products from idea to something people use.</h2>
             <p>
               I'm {firstName}, Lead Product Builder at <b>Brthrs Agency</b>, a
-              Lovable partner. I sketch the idea, design the experience, write
-              the code, and ship it — no handoffs.
+              Lovable partner agency. I start with a rough idea, shape it into a
+              real product, and stay with it until it's live and in people's hands.
             </p>
             <p>
-              The same energy goes into every project, whether it's an internal
-              tool that turns days of work into 20 minutes, a marketplace that
-              keeps good toys out of landfill, or a journaling app for new
-              mothers. The shortest line between a real problem and something
-              people can use.
+              The same care goes into every project, whether it's an internal
+              tool that turns days of work into about twenty minutes, a
+              marketplace that keeps good toys out of landfill, or a journaling
+              app for new mothers finding their feet.
             </p>
             <div class="facts">
               <span class="fact">Lead Product Builder @ Brthrs</span>
@@ -95,10 +95,10 @@ const work = toWorkCards(projects, base);
     <div class="wrap">
       <div class="shead reveal"><h2>What I can do for you</h2><span class="hand">the practical bit →</span></div>
       <div class="svcs">
-        <div class="svc reveal"><span class="doodle">~ one</span><h3>AI Product Design</h3><p>Turning a vague itch into a sharp, usable product with AI at its core.</p></div>
-        <div class="svc reveal" data-d="1"><span class="doodle">~ two</span><h3>Full-stack Build</h3><p>The code that makes it real — front to back, no handoffs.</p></div>
-        <div class="svc reveal" data-d="2"><span class="doodle">~ three</span><h3>Rapid Prototyping</h3><p>Idea to clickable in days, so you can feel it before you fund it.</p></div>
-        <div class="svc reveal" data-d="3"><span class="doodle">~ four</span><h3>Ship &amp; Iterate</h3><p>Launch is the start. I measure, learn, and make it better.</p></div>
+        <div class="svc reveal"><span class="doodle">~ one</span><h3>AI Product Design</h3><p>I help turn a rough idea into a clear, usable product with AI at its core.</p></div>
+        <div class="svc reveal" data-d="1"><span class="doodle">~ two</span><h3>End-to-end Delivery</h3><p>I stay with a product from the first concept through to a version that's live and in people's hands.</p></div>
+        <div class="svc reveal" data-d="2"><span class="doodle">~ three</span><h3>Rapid Prototyping</h3><p>I can get a working prototype in front of you within days, so you can try the idea before committing to it.</p></div>
+        <div class="svc reveal" data-d="3"><span class="doodle">~ four</span><h3>Ship &amp; Iterate</h3><p>Launching is only the beginning, so I keep measuring, learning, and improving the product after it goes live.</p></div>
       </div>
     </div>
   </section>
