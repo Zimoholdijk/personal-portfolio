@@ -2,110 +2,86 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { SITE } from '../config';
 import { projects } from '../data/projects';
-import { toWorkCards } from '../lib/work';
+import { toWorkRows } from '../lib/work';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const asset = (p: string) => `${base}${p}`;
 const projectsUrl = `${base}/projects/`;
 
 const firstName = SITE.name.split(' ')[0];
-const work = toWorkCards(projects, base);
+const rows = toWorkRows(projects, base);
+const shipped = String(projects.length).padStart(2, '0');
 ---
 
 <SiteLayout title={`${SITE.name} · ${SITE.tagline}`} description={SITE.description}>
   <header class="hero" id="top">
-    <div class="wrap hero__grid">
-      <div>
-        <h1 class="reveal">
-          Hi <span class="wave">👋</span>, I build AI products for clients, family, and
-          <span class="squig">community<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 14 2, 26 8 T 50 8 T 74 8 T 98 8 T 122 8 T 146 8 T 170 8 T 196 8"></path></svg></span>.
-        </h1>
-        <p class="hero__lead reveal" data-d="1">
+    <div class="wrap">
+      <span class="lbl reveal"><i></i> Available for new builds, 2026</span>
+      <h1 class="reveal" data-d="1">AI Products<br />for clients, family <span class="it">&amp; community.</span></h1>
+      <div class="hero__sub reveal" data-d="2">
+        <p>
           I'm {firstName}, <b>Lead Product Builder at Brthrs Agency</b>, where I
           build AI-powered products full time. Below is a selection of the things
           I've made and the problems they were built to solve.
         </p>
-        <div class="hero__cta reveal" data-d="2">
-          <a class="cta" href="#work">See what I've made ↓</a>
-          <a class="ghost" href="#about">The story</a>
+        <div class="hero__stats">
+          <div><b>{shipped}</b><span>Shipped</span></div>
+          <div><b>03</b><span>Audiences</span></div>
         </div>
-      </div>
-      <div class="hero__photo reveal" data-d="2">
-        <span class="ring" aria-hidden="true"></span>
-        <img class="hero__img" src={asset('/zimo.jpeg')} alt={SITE.name} />
-        <span class="note">that's me!<svg viewBox="0 0 46 34"><path d="M40 4 C 30 22, 18 26, 6 22 M 13 16 L 5 22 L 12 29"></path></svg></span>
       </div>
     </div>
   </header>
 
-  <svg class="wavy" viewBox="0 0 1440 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 13 Q 30 2, 60 13 T 120 13 T 180 13 T 240 13 T 300 13 T 360 13 T 420 13 T 480 13 T 540 13 T 600 13 T 660 13 T 720 13 T 780 13 T 840 13 T 900 13 T 960 13 T 1020 13 T 1080 13 T 1140 13 T 1200 13 T 1260 13 T 1320 13 T 1380 13 T 1440 13"></path></svg>
+  <div class="marq" aria-hidden="true">
+    <div class="marq__t">
+      <span>AI Products</span><i>✦</i><span class="it">for clients</span><i>✦</i><span>End to end</span><i>✦</i><span class="it">for family</span><i>✦</i><span>Built with care</span><i>✦</i><span class="it">for community</span><i>✦</i>
+      <span>AI Products</span><i>✦</i><span class="it">for clients</span><i>✦</i><span>End to end</span><i>✦</i><span class="it">for family</span><i>✦</i><span>Built with care</span><i>✦</i><span class="it">for community</span><i>✦</i>
+    </div>
+  </div>
 
   <section class="section" id="work">
     <div class="wrap">
-      <div class="shead reveal"><h2>Things I've built</h2><span class="hand">a few of them ↓</span></div>
-      <div class="works">
-        {work.map((p) => (
-          <a class="work reveal" href={p.href} style={`--c:${p.color};`}>
-            <div class="work__media"><span>{p.media}</span></div>
-            <div class="work__body">
-              <span class="work__name">{p.title}</span>
-              <span class="work__for">{p.forText}</span>
-            </div>
+      <div class="shead reveal"><h2>Selected <span class="it">work</span></h2><span class="lbl">{shipped} projects</span></div>
+      <div class="cases">
+        {rows.map((p) => (
+          <a class="case reveal" href={p.href} style={`--c:${p.color};`}>
+            <span class="case__no">{p.no}</span>
+            <span class="case__name">{p.name}</span>
+            <span class="case__desc">{p.blurb}</span>
+            <span class="case__meta"><span class="case__thumb"></span><span class="tag">{p.audience}</span></span>
           </a>
         ))}
       </div>
-      <p class="work__more reveal"><a href={projectsUrl}>See all projects →</a></p>
-    </div>
-  </section>
-
-  <section class="section" id="about" style="padding-top:0;">
-    <div class="wrap">
-      <div class="about reveal">
-        <div class="about__grid">
-          <div class="about__photo">
-            <span class="sticker">hello again</span>
-            <img class="about__img" src={asset('/zimo.jpeg')} alt={SITE.name} />
-          </div>
-          <div>
-            <h2>I take AI-powered products from idea to something people use.</h2>
-            <p>
-              I'm {firstName}, Lead Product Builder at <b>Brthrs Agency</b>, a
-              Lovable partner agency. I start with a rough idea, shape it into a
-              real product, and stay with it until it's live and in people's hands.
-            </p>
-            <p>
-              The same care goes into every project, whether it's an internal
-              tool that turns days of work into about twenty minutes, a
-              marketplace that keeps good toys out of landfill, or a journaling
-              app for new mothers finding their feet.
-            </p>
-            <div class="facts">
-              <span class="fact">Lead Product Builder @ Brthrs</span>
-              <span class="fact">{projects.length}+ products shipped</span>
-              <span class="fact">clients · family · community</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="reveal" style="margin-top:clamp(28px,4vw,44px);"><a class="ghost" href={projectsUrl}>See all projects →</a></p>
     </div>
   </section>
 
   <section class="section" id="services" style="padding-top:0;">
     <div class="wrap">
-      <div class="shead reveal"><h2>What I can do for you</h2><span class="hand">the practical bit →</span></div>
+      <div class="shead reveal"><h2>What I <span class="it">do</span></h2><span class="lbl">Capabilities</span></div>
       <div class="svcs">
-        <div class="svc reveal"><span class="doodle">~ one</span><h3>AI Product Design</h3><p>I help turn a rough idea into a clear, usable product with AI at its core.</p></div>
-        <div class="svc reveal" data-d="1"><span class="doodle">~ two</span><h3>End-to-end Delivery</h3><p>I stay with a product from the first concept through to a version that's live and in people's hands.</p></div>
-        <div class="svc reveal" data-d="2"><span class="doodle">~ three</span><h3>Rapid Prototyping</h3><p>I can get a working prototype in front of you within days, so you can try the idea before committing to it.</p></div>
-        <div class="svc reveal" data-d="3"><span class="doodle">~ four</span><h3>Ship &amp; Iterate</h3><p>Launching is only the beginning, so I keep measuring, learning, and improving the product after it goes live.</p></div>
+        <div class="svc reveal"><span class="no">01</span><h3>AI Product Design</h3><p>I help turn a rough idea into a clear, usable product with AI at its core.</p></div>
+        <div class="svc reveal" data-d="1"><span class="no">02</span><h3>End-to-end Delivery</h3><p>I stay with a product from the first concept through to a version that's live and in people's hands.</p></div>
+        <div class="svc reveal" data-d="2"><span class="no">03</span><h3>Rapid Prototyping</h3><p>I can get a working prototype in front of you within days, so you can try the idea before committing to it.</p></div>
+        <div class="svc reveal" data-d="3"><span class="no">04</span><h3>Ship &amp; Iterate</h3><p>Launching is only the beginning, so I keep measuring, learning, and improving the product after it goes live.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="endcta" id="contact">
+  <section class="section about" id="about" style="padding-top:0;">
     <div class="wrap">
-      <span class="hand-k reveal">got a problem worth building?</span>
-      <h2 class="reveal" data-d="1">Let's make <span class="squig">something<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 14 2, 26 8 T 50 8 T 74 8 T 98 8 T 122 8 T 146 8 T 170 8 T 196 8"></path></svg></span>.</h2>
+      <p class="statement reveal">I take AI-powered products from <span class="it">idea</span> to something people can use.</p>
+      <div class="about__row reveal" data-d="1">
+        <span><b>Clients</b>products for the people I work with</span>
+        <span><b>Family</b>products made for the people I love</span>
+        <span><b>Community</b>products that give back</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section endcta" id="contact">
+    <div class="wrap">
+      <span class="lbl reveal">Got a problem worth building?</span>
+      <h2 class="reveal" data-d="1"><a href={`mailto:${SITE.email}`}>Let's <span class="it">build.</span></a></h2>
       <div class="row reveal" data-d="2">
         <a class="cta" href={`mailto:${SITE.email}`}>{SITE.email} →</a>
         <a class="ghost" href="#top">Back to top</a>

@@ -10,7 +10,7 @@ export const SITE = {
   // Used for JSON-LD sameAs links (helps Google connect your profiles).
   socials: {
     github: 'https://github.com/zimoholdijk',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/zimo-holdijk/',
     twitter: '',
   },
   // Default Open Graph image, relative to /public. 1200x630 recommended.

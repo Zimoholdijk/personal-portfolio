@@ -45,13 +45,13 @@ const schema = {
     <div class="wrap">
       <div class="inner">
         <a class="back reveal" href={projectsUrl}>← All projects</a>
-        <div class="detail__banner reveal"></div>
+        <div class="detail__accent reveal"></div>
         <div class="detail__tags reveal">
           {project.tags.map((t) => <span class="detail__tag">{t}</span>)}
         </div>
-        <h1 class="reveal">{project.title}</h1>
-        <p class="detail__lead reveal" data-d="1">{project.description}</p>
-        <div class="detail__actions reveal" data-d="2">
+        <h1 class="reveal" data-d="1">{project.title}</h1>
+        <p class="detail__lead reveal" data-d="2">{project.description}</p>
+        <div class="detail__actions reveal" data-d="3">
           {project.url && <a class="cta" href={project.url} target="_blank" rel="noopener">Visit {host} →</a>}
           {project.repo && <a class="ghost" href={project.repo} target="_blank" rel="noopener">Source code</a>}
           <a class="ghost" href={`mailto:${SITE.email}`}>Ask me about it</a>

@@ -6,12 +6,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <SiteLayout title={`Page not found · ${SITE.name}`} description="This page does not exist.">
-  <section class="endcta pagetop">
+  <section class="section endcta pagetop">
     <div class="wrap">
-      <span class="hand-k">well, this is awkward</span>
-      <h2>404.</h2>
+      <span class="lbl">Error 404</span>
+      <h2>Not <span class="it">found.</span></h2>
       <div class="row">
-        <a class="cta" href={`${base}/`}>Head back home →</a>
+        <a class="cta" href={`${base}/`}>Back home →</a>
         <a class="ghost" href={`${base}/projects/`}>See the projects</a>
       </div>
     </div>
