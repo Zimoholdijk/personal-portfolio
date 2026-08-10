@@ -2,10 +2,10 @@
 export const SITE = {
   name: 'Zimo Holdijk',
   // Appears in <title> on the homepage and in the JSON-LD Person schema.
-  tagline: 'Lead Product Builder at Brthrs Agency',
+  tagline: 'Freelance AI Product Builder',
   // 150-160 characters. This is your Google snippet, make it count.
   description:
-    'Zimo Holdijk is Lead Product Builder at Brthrs Agency, building AI-powered products for the clients he works with, for his family, and for his community.',
+    'Zimo Holdijk is a freelance AI product builder, shipping AI-powered products for the clients he works with, for his family, and for his community.',
   email: 'zimoholdijk@gmail.com',
   // Used for JSON-LD sameAs links (helps Google connect your profiles).
   socials: {

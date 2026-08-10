@@ -18,7 +18,7 @@ export const projects: Project[] = [
     blurb: 'Client intake to quote in ~20 minutes',
     description:
       'An agentic workflow built with Claude that takes a new client from intake to quote in about 20 minutes, work that used to take days across several people. It ingests transcripts, emails, and documents, researches the client, drafts a scoping document and presentation, pressure-tests the proposal with a simulated client stand-in, and reviews everything against brand guidelines, with one person in the loop.',
-    tags: ['Internal · Brthrs Agency', 'Agentic AI', 'Claude'],
+    tags: ['Agency work', 'Agentic AI', 'Claude'],
   },
   {
     slug: 'recht-in-beeld',
@@ -43,8 +43,8 @@ export const projects: Project[] = [
     title: 'Agency billing dashboard',
     blurb: 'Real-time billing for the agency',
     description:
-      'Our managing director was forecasting on stale data spread across multiple systems. I built an internal dashboard that connects to our accounting software via API and shows real-time billing, outstanding quotes, and expenditure in one place. Now used daily for financial forecasting and operational decisions.',
-    tags: ['Internal · Brthrs Agency', 'Dashboard', 'API'],
+      'An agency was forecasting on stale data spread across multiple systems. I built an internal dashboard that connects to their accounting software via API and shows real-time billing, outstanding quotes, and expenditure in one place. Now used daily for their financial forecasting and operational decisions.',
+    tags: ['Agency work', 'Dashboard', 'API'],
   },
   {
     slug: 'bloomfinder',

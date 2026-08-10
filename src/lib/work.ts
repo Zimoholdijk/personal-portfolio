@@ -11,7 +11,7 @@ const palette = [
 function audienceLabel(tags: string[]): string {
   const t = tags[0] || '';
   if (/client/i.test(t)) return 'Client';
-  if (/internal|brthrs/i.test(t)) return 'Agency';
+  if (/agency|internal|brthrs/i.test(t)) return 'Agency';
   if (/personal/i.test(t)) return 'Personal';
   return t;
 }

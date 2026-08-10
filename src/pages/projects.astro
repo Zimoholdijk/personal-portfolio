@@ -5,9 +5,9 @@ import { projects } from '../data/projects';
 import { toWorkRows } from '../lib/work';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (p: string) => `${base}${p}`;
 const rows = toWorkRows(projects, base);
 
-// ItemList schema helps search engines understand this is a portfolio listing.
 const listSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -27,18 +27,24 @@ const listSchema = {
 >
   <section class="section pagetop">
     <div class="wrap">
-      <div class="shead reveal"><h2>All <span class="it">projects</span></h2><span class="lbl">{String(projects.length).padStart(2, '0')} builds</span></div>
+      <div class="shead reveal"><h2>All <span class="it">projects</span></h2><span class="eyebrow">{String(projects.length).padStart(2, '0')} builds</span></div>
       <p class="lede reveal">
         Everything I've built, from agentic internal tools to marketplaces and
         RAG search. Select any project for the full write-up.
       </p>
-      <div class="cases">
+      <div class="work-grid">
         {rows.map((p) => (
-          <a class="case reveal" href={p.href} style={`--c:${p.color};`}>
-            <span class="case__no">{p.no}</span>
-            <span class="case__name">{p.name}</span>
-            <span class="case__desc">{p.blurb}</span>
-            <span class="case__meta"><span class="case__thumb"></span><span class="tag">{p.audience}</span></span>
+          <a class="work-card reveal" href={p.href} style={`--c:${p.color};`}>
+            <div class="work-card__img">
+              {p.image
+                ? <img src={asset(p.image)} alt={p.title} loading="lazy" />
+                : <div class="work-card__ph"><span>{p.name}</span></div>}
+            </div>
+            <div class="work-card__body">
+              <span class="work-card__name">{p.name} <span class="arrow">↗</span></span>
+              <span class="work-card__tag">{p.audience}</span>
+            </div>
+            <p class="work-card__blurb">{p.blurb}</p>
           </a>
         ))}
       </div>

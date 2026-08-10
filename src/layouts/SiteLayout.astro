@@ -42,8 +42,6 @@ const nav = [
   { label: 'About', href: `${base}/#about` },
   { label: 'Contact', href: `${base}/#contact` },
 ];
-
-const firstName = SITE.name.split(' ')[0];
 ---
 
 <!doctype html>
@@ -76,7 +74,7 @@ const firstName = SITE.name.split(' ')[0];
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
 
@@ -86,10 +84,10 @@ const firstName = SITE.name.split(' ')[0];
 
   <body>
     <nav class="nav">
-      <a class="brand" href={`${base}/`}>{firstName}&nbsp;Holdijk<sup>®</sup></a>
+      <a class="brand" href={`${base}/`}>{SITE.name}</a>
       <div class="links">
         {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-        <a class="cta" href={`mailto:${SITE.email}`}>Let's talk →</a>
+        <a class="cta" href={`mailto:${SITE.email}`}>Let's talk</a>
       </div>
     </nav>
 
