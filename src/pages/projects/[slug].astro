@@ -1,11 +1,11 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import { SITE } from '../../config';
-import { projects, type Project } from '../../data/projects';
+import { visibleProjects, type Project } from '../../data/projects';
 import { cardColor } from '../../lib/work';
 
 export function getStaticPaths() {
-  return projects.map((project, index) => ({
+  return visibleProjects.map((project, index) => ({
     params: { slug: project.slug },
     props: { project, color: cardColor(index) },
   }));

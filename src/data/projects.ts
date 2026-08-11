@@ -9,6 +9,7 @@ export interface Project {
   url?: string;
   repo?: string;
   image?: string; // path under /public, e.g. '/projects/myapp.png'
+  hidden?: boolean; // when true, the project is left off the site entirely
 }
 
 export const projects: Project[] = [
@@ -62,6 +63,7 @@ export const projects: Project[] = [
     slug: 'storycloud',
     title: 'StoryCloud: AI storybook builder',
     blurb: 'Illustrated AI storybooks for my kids',
+    hidden: true,
     description:
       'My kids burn through storybooks and always want stories about their characters in their worlds. StoryCloud lets them pick characters, settings, and themes, then generates fully illustrated stories on the fly using generative text and image creation.',
     tags: ['Personal project', 'Generative AI', 'Kids'],
@@ -71,6 +73,7 @@ export const projects: Project[] = [
     slug: 'new-mom-reflections',
     title: 'New Mom Reflections: post-partum journaling',
     blurb: 'Gentle AI journaling for new mothers',
+    hidden: true,
     description:
       'Existing journaling tools aren’t designed for the emotional and physical reality of new motherhood, and a blank page is intimidating when you’re sleep-deprived. This app uses AI to generate thoughtful, tailored prompts each session, giving new moms a gentle starting point for reflection every time they open it.',
     tags: ['Personal project', 'AI', 'Journaling'],
@@ -87,3 +90,6 @@ export const projects: Project[] = [
     url: 'https://app.matcherly.com',
   },
 ];
+
+// Projects shown on the site (hidden ones are kept in the list but left off).
+export const visibleProjects = projects.filter((p) => !p.hidden);

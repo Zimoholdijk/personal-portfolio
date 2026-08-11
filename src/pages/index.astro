@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { SITE } from '../config';
-import { projects } from '../data/projects';
+import { visibleProjects } from '../data/projects';
 import { toWorkRows } from '../lib/work';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -9,29 +9,33 @@ const asset = (p: string) => `${base}${p}`;
 const projectsUrl = `${base}/projects/`;
 
 const firstName = SITE.name.split(' ')[0];
-const rows = toWorkRows(projects, base);
+const rows = toWorkRows(visibleProjects, base);
 const featured = rows.slice(0, 5);
 ---
 
 <SiteLayout title={`${SITE.name} · ${SITE.tagline}`} description={SITE.description}>
   <header class="hero" id="top">
-    <div class="wrap">
-      <span class="eyebrow reveal">Freelance AI Product Builder</span>
-      <h1 class="reveal" data-d="1">I build AI products <span class="it">end to end.</span></h1>
-      <div class="hero__sub reveal" data-d="2">
-        <p>
-          I'm {firstName}, a <b>freelance AI product builder</b>. I build
-          AI-powered products full time. Below is a selection of the things I've
-          made and the problems they were built to solve.
+    <div class="wrap hero__grid">
+      <div class="hero__intro">
+        <span class="eyebrow reveal">Freelance · AI-native Product Builder</span>
+        <h1 class="reveal" data-d="1">I build products <span class="it">end to end.</span></h1>
+        <p class="hero__lead reveal" data-d="2">
+          I'm {firstName}, a freelance, AI-native product builder. I take a rough
+          idea and carry it all the way to something live and in use. Below is a
+          selection of what I've made.
         </p>
-        <div class="hero__meta">
-          <b>{projects.length} products</b><br />for clients, family & community
+        <div class="hero__cta reveal" data-d="2">
+          <a class="cta" href="#work">See the work</a>
+          <a class="ghost" href="#contact">Get in touch</a>
         </div>
+      </div>
+      <div class="hero__photo reveal" data-d="1">
+        <img src={asset('/zimo.jpg')} alt={SITE.name} width="1379" height="1600" />
       </div>
     </div>
   </header>
 
-  <section class="section" id="work" style="padding-top:0;">
+  <section class="section" id="work">
     <div class="wrap">
       <div class="shead reveal"><h2>Selected <span class="it">work</span></h2><a class="ghost" href={projectsUrl}>All projects</a></div>
       <div class="work-grid">
@@ -55,18 +59,17 @@ const featured = rows.slice(0, 5);
 
   <section class="section" id="about">
     <div class="wrap about__grid">
-      <h2 class="reveal">I take AI-powered products from <span class="it">idea</span> to something people use.</h2>
+      <h2 class="reveal">I take products from a <span class="it">rough idea</span> to something people use.</h2>
       <div class="about__body reveal" data-d="1">
         <p>
-          I'm {firstName}, a <b>freelance AI product builder</b>. I start with a
-          rough idea, shape it into a real product, and stay with it until it's
-          live and in people's hands.
+          I'm {firstName}, a freelance, <b>AI-native product builder</b>. I start
+          with a rough idea, shape it into a real product, and stay with it until
+          it's live and in people's hands.
         </p>
         <p>
-          The same care goes into every project, whether it's an internal tool
-          that turns days of work into about twenty minutes, a marketplace that
-          keeps good toys out of landfill, or a journaling app for new mothers
-          finding their feet.
+          The same care goes into every project, from internal tools that turn
+          days of work into minutes to full platforms built from scratch. Always
+          the shortest line between a real problem and something people can use.
         </p>
       </div>
     </div>
