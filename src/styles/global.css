@@ -75,9 +75,6 @@ a { color: inherit; text-decoration: none; }
 .about__grid h2 .it { font-weight: 400; }
 .about__body p { margin: 0 0 16px; color: var(--soft); font-size: clamp(1rem, 1.2vw, 1.12rem); line-height: 1.68; }
 .about__body p b { color: var(--ink); font-weight: 600; }
-.about__facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); }
-.about__facts b { display: block; font-weight: 600; letter-spacing: -.02em; font-size: 1.4rem; margin-bottom: 3px; }
-.about__facts span { font-size: .8rem; color: var(--soft); }
 @media (max-width: 760px) { .about__grid { grid-template-columns: 1fr; } }
 
 /* ── End CTA (contact) ─────────────────────────────────────────────────── */

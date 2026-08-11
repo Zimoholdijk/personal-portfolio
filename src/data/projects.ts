@@ -1,7 +1,7 @@
 // Add your projects here. Each one renders as a row on the homepage and
 // /projects, and gets its own detail page at /projects/<slug>/.
 export interface Project {
-  slug: string; // stable URL segment for the detail page, e.g. 'toyswap'
+  slug: string; // stable URL segment for the detail page, e.g. 'toyrotation'
   title: string;
   blurb: string; // one short line (< ~40 chars) shown next to the name in lists
   description: string;
@@ -12,6 +12,16 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'toyrotation',
+    title: 'ToyRotation: AI-powered toy marketplace',
+    blurb: 'Credit-based toy swapping for parents',
+    image: '/projects/toyrotation-1.png',
+    description:
+      'A credit-based toy-swapping marketplace for local parent groups. Parents upload photos of toys their kids have outgrown, and AI analyses the images to suggest descriptions, categories, and credit values, which makes listing something quick and painless. No money changes hands, just credits, so perfectly good toys stay out of the landfill.',
+    tags: ['Personal project', 'AI', 'Marketplace'],
+    url: 'https://toyrotation.nl',
+  },
   {
     slug: 'agentic-scoping-workflow',
     title: 'Agentic scoping workflow',
@@ -24,19 +34,11 @@ export const projects: Project[] = [
     slug: 'recht-in-beeld',
     title: 'Recht in Beeld: AI case law analysis',
     blurb: 'Court cases analysed and mapped',
+    image: '/projects/recht-in-beeld-1.png',
     description:
       'A Dutch investigation firm needed to analyse thousands of court cases nationwide and surface geographic patterns in case law. I built an API scraper and AI analysis engine that processes case law across the Netherlands, powering a map-based frontend for exploring legal insights geographically and surfacing patterns humans would never spot manually.',
     tags: ['Client project', 'AI Analysis', 'Web Scraping'],
     url: 'https://rechtinbeeld.ai',
-  },
-  {
-    slug: 'toyswap',
-    title: 'ToySwap: AI-powered toy marketplace',
-    blurb: 'Credit-based toy swapping for parents',
-    description:
-      'A credit-based toy-swapping marketplace for local parent groups. Parents upload photos of toys their kids have outgrown, and AI analyses the images to suggest descriptions, categories, and credit values, which makes listing something quick and painless. No money changes hands, just credits, so perfectly good toys stay out of the landfill.',
-    tags: ['Personal project', 'AI', 'Marketplace'],
-    url: 'https://toyrotation.nl',
   },
   {
     slug: 'agency-billing-dashboard',
@@ -47,13 +49,14 @@ export const projects: Project[] = [
     tags: ['Agency work', 'Dashboard', 'API'],
   },
   {
-    slug: 'bloomfinder',
-    title: 'BloomFinder: RAG search for alternative medicine',
-    blurb: 'RAG search over a private library',
+    slug: 'bandbridge',
+    title: 'BandBridge: a community for LA musicians',
+    blurb: 'Community hub for LA musicians',
+    image: '/projects/bandbridge-1.png',
     description:
-      'My father is an alternative medicine practitioner with years of research and literature but no way to search it semantically. I built a full RAG pipeline (document ingestion, embedding, vector search, and LLM answer synthesis) so he can ask natural-language questions and get sourced answers from his own knowledge base, and even sell access via subscription.',
-    tags: ['Personal project', 'RAG', 'Vector Search'],
-    url: 'https://bloomfinder-production.up.railway.app',
+      'BandBridge is a community platform for musicians in Los Angeles, built for a showcase host who had become the person everyone called to find a bassist, a teacher, or an open mic. Rather than another pile of tools, I focused it on the one thing that mattered: helping musicians find each other. They create profiles with expertise tags and music links, post events and gigs that archive themselves once they pass, and search a talent pool to connect, with moderation tools so it runs without a developer.',
+    tags: ['Client project', 'Community', 'Full-stack'],
+    url: 'https://bandbridge.club',
   },
   {
     slug: 'storycloud',
@@ -77,8 +80,9 @@ export const projects: Project[] = [
     slug: 'matcherly',
     title: 'Matcherly: curated freelancer matching',
     blurb: 'Curated marketplace for ERP experts',
+    image: '/projects/matcherly-1.png',
     description:
-      'Companies needing expertise in a specific ERP tool had no efficient way to find vetted freelancers and agencies. Matcherly is a curated, multi-sided marketplace with role-based onboarding (freelancer, client, partner), profile management, project matching, and proposal workflows, all built end to end.',
+      'Companies running a specialist ERP system struggle to find consultants with the right module expertise, and generic freelance marketplaces are too broad to help. Matcherly is a curated, three-sided platform where a business submits a project and an expert team hand-picks the best-fit specialists, rather than leaving them to browse hundreds of profiles. I built it end to end: a guided submission flow for clients, rich profiles and a matched-projects dashboard for specialists, and an admin cockpit for the team to review, match, and quality-check every proposal.',
     tags: ['Client project', 'Marketplace', 'Matching'],
     url: 'https://app.matcherly.com',
   },
