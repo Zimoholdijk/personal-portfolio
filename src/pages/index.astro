@@ -80,8 +80,8 @@ const featured = rows.slice(0, 5);
       <span class="eyebrow reveal">Got a problem worth building?</span>
       <h2 class="reveal" data-d="1">Let's <span class="it">build</span> something.</h2>
       <div class="row reveal" data-d="2">
-        <a class="cta" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-        <a class="ghost" href="#top">Back to top</a>
+        <a class="cta" href={SITE.bookingUrl} target="_blank" rel="noopener">Book a call</a>
+        <a class="ghost" href={`${base}/contact/`}>Email me instead</a>
       </div>
     </div>
   </section>

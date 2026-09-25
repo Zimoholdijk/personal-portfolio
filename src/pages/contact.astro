@@ -1,0 +1,24 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { SITE } from '../config';
+---
+
+<SiteLayout
+  title={`Contact · ${SITE.name}`}
+  description={`Get in touch with ${SITE.name}: book a call or send an email at ${SITE.email}.`}
+>
+  <section class="section endcta pagetop">
+    <div class="wrap">
+      <span class="eyebrow reveal">Contact</span>
+      <h2 class="reveal" data-d="1">Say <span class="it">hello.</span></h2>
+      <p class="contact__lede reveal" data-d="2">
+        Prefer email? Write me at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        and I'll get back to you. Or grab a slot in my calendar for a call.
+      </p>
+      <div class="row reveal" data-d="2">
+        <a class="cta" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        <a class="ghost" href={SITE.bookingUrl} target="_blank" rel="noopener">Book a call</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

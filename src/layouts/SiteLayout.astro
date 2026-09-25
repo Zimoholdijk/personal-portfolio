@@ -40,7 +40,7 @@ const nav = [
   { label: 'Work', href: `${base}/#work` },
   { label: 'Projects', href: `${base}/projects/` },
   { label: 'About', href: `${base}/#about` },
-  { label: 'Contact', href: `${base}/#contact` },
+  { label: 'Contact', href: `${base}/contact/` },
 ];
 ---
 
@@ -87,7 +87,7 @@ const nav = [
       <a class="brand" href={`${base}/`}>{SITE.name}</a>
       <div class="links">
         {nav.map((n) => <a href={n.href}>{n.label}</a>)}
-        <a class="cta" href={`mailto:${SITE.email}`}>Let's talk</a>
+        <a class="cta" href={SITE.bookingUrl} target="_blank" rel="noopener">Let's talk</a>
       </div>
     </nav>
 

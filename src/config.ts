@@ -7,6 +7,8 @@ export const SITE = {
   description:
     'Zimo Holdijk is a freelance, AI-native product builder who takes products from a rough idea to shipped, end to end.',
   email: 'zimoholdijk@gmail.com',
+  // Booking link used by every "Let's talk" button.
+  bookingUrl: 'https://calendar.app.google/g2sVR23NdU4Xz3Tq5',
   // Used for JSON-LD sameAs links (helps Google connect your profiles).
   socials: {
     github: 'https://github.com/zimoholdijk',
