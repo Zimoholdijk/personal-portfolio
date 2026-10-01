@@ -12,7 +12,6 @@ const projectsUrl = `${base}/projects/`;
 const firstName = SITE.name.split(' ')[0];
 const rows = toWorkRows(visibleProjects, base);
 const featured = rows.slice(0, 5);
-const bySlug = (slug: string) => rows.find((r) => r.slug === slug)?.href ?? projectsUrl;
 ---
 
 <SiteLayout title={`${SITE.name} · ${SITE.tagline}`} description={SITE.description}>
@@ -21,15 +20,12 @@ const bySlug = (slug: string) => rows.find((r) => r.slug === slug)?.href ?? proj
       <div class="hero__intro">
         <h1 class="reveal">Hi, I'm {firstName}.</h1>
         <p class="hero__lead reveal" data-d="1">
-          I'm a freelance product builder. Lately that's meant
-          a <a href={bySlug('recht-in-beeld')}>case-law map of the Netherlands</a>,
-          a <a href={bySlug('bandbridge')}>community hub for LA musicians</a>,
-          a <a href={bySlug('toyrotation')}>toy-swapping marketplace for parents</a>,
-          and an <a href={bySlug('agentic-scoping-workflow')}>AI workflow that turns a client call into a quote</a> in
-          about twenty minutes.
+          I'm a freelance product builder. I help turn ideas into products
+          people actually use, from client platforms to the internal tools that
+          quietly save a team hours every week.
         </p>
         <p class="hero__aside reveal" data-d="2">
-          I use AI heavily, mostly so a small team can ship the right thing sooner.
+          I use AI heavily, and I can help you learn to do the same.
         </p>
         <div class="hero__cta reveal" data-d="2">
           <a class="cta" href="#work">See the work</a>
@@ -73,9 +69,10 @@ const bySlug = (slug: string) => rows.find((r) => r.slug === slug)?.href ?? proj
 
   <section class="section endcta" id="contact">
     <div class="wrap">
-      <h2 class="reveal">Have something in mind?</h2>
+      <h2 class="reveal">Building something?</h2>
       <p class="endcta__lede reveal" data-d="1">
-        Book a call, or email me at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+        Whether you want me to build it or want support building it yourself,
+        reach out. Book a call, or email me at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
       </p>
       <div class="row reveal" data-d="2">
         <a class="cta" href={SITE.bookingUrl} target="_blank" rel="noopener">Book a call</a>
