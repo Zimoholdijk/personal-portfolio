@@ -26,13 +26,14 @@ export const projects: Project[] = [
     url: 'https://toyrotation.nl',
   },
   {
-    slug: 'agentic-scoping-workflow',
-    title: 'Agentic scoping workflow',
-    blurb: 'Client intake to quote in ~20 minutes',
-    stat: { value: '~20 min', label: 'from client intake to a finished quote. It used to take days.' },
+    slug: 'severance-calculator',
+    title: 'Severance Calculator: lead generation for a Toronto paralegal firm',
+    blurb: 'Severance estimates that turn into leads',
+    stat: { value: 'Free', label: 'severance estimate that explains your rights, and brings the firm new clients' },
     description:
-      'An agentic workflow built with Claude that takes a new client from intake to quote in about 20 minutes, work that used to take days across several people. It ingests transcripts, emails, and documents, researches the client, drafts a scoping document and presentation, pressure-tests the proposal with a simulated client stand-in, and reviews everything against brand guidelines, with one person in the loop.',
-    tags: ['Agency work', 'Agentic AI', 'Claude'],
+      'A Toronto employment paralegal firm wanted more people to find out what they are owed after losing a job, and to get in touch when they need help. I built a severance calculator in Lovable and integrated it dynamically into their existing website, so it lives on their own pages rather than as a separate app. Visitors get an estimate of their severance and learn about their rights along the way, and the results lead naturally into contacting the firm, so the tool doubles as a steady source of new leads.',
+    tags: ['Client project', 'Lovable', 'Lead generation'],
+    url: 'https://employmentparalegal.ca/EN/severance-calculator',
   },
   {
     slug: 'recht-in-beeld',
@@ -45,13 +46,13 @@ export const projects: Project[] = [
     url: 'https://rechtinbeeld.ai',
   },
   {
-    slug: 'agency-billing-dashboard',
-    title: 'Cashflow forecasting tool',
-    blurb: 'Cashflow forecast from live finance data',
-    stat: { value: 'Daily', label: 'used for financial planning, built on live quotes and invoices' },
+    slug: 'agentic-scoping-workflow',
+    title: 'Agentic scoping workflow',
+    blurb: 'Client intake to quote in ~20 minutes',
+    stat: { value: '~20 min', label: 'from client intake to a finished quote. It used to take days.' },
     description:
-      'The agency was forecasting on stale data spread across multiple systems. I built an internal forecasting tool that integrates with our accounting software via API and pulls open quotes, signed quotes, invoices due, and invoices paid into a single cashflow forecast. Now used daily for financial planning and operational decisions.',
-    tags: ['Agency work', 'Forecasting', 'API'],
+      'An agentic workflow built with Claude that takes a new client from intake to quote in about 20 minutes, work that used to take days across several people. It ingests transcripts, emails, and documents, researches the client, drafts a scoping document and presentation, pressure-tests the proposal with a simulated client stand-in, and reviews everything against brand guidelines, with one person in the loop.',
+    tags: ['Agency work', 'Agentic AI', 'Claude'],
   },
   {
     slug: 'bandbridge',
@@ -62,6 +63,15 @@ export const projects: Project[] = [
       'BandBridge is a community platform for musicians in Los Angeles, built for a Brthrs client: a showcase host who had become the person everyone called to find a bassist, a teacher, or an open mic. I was product manager and product builder, managing the earlier build phases and then building additional features myself once the platform shipped. Rather than another pile of tools, I focused it on the one thing that mattered: helping musicians find each other. They create profiles with expertise tags and music links, post events and gigs that archive themselves once they pass, and search a talent pool to connect, with moderation tools so it runs without a developer.',
     tags: ['Brthrs client', 'Product manager & builder', 'Community', 'Full-stack'],
     url: 'https://bandbridge.club',
+  },
+  {
+    slug: 'agency-billing-dashboard',
+    title: 'Cashflow forecasting tool',
+    blurb: 'Cashflow forecast from live finance data',
+    stat: { value: 'Daily', label: 'used for financial planning, built on live quotes and invoices' },
+    description:
+      'The agency was forecasting on stale data spread across multiple systems. I built an internal forecasting tool that integrates with our accounting software via API and pulls open quotes, signed quotes, invoices due, and invoices paid into a single cashflow forecast. Now used daily for financial planning and operational decisions.',
+    tags: ['Agency work', 'Forecasting', 'API'],
   },
   {
     slug: 'storycloud',
