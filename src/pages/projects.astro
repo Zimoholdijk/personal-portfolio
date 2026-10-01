@@ -1,11 +1,11 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
 import { SITE } from '../config';
 import { visibleProjects } from '../data/projects';
 import { toWorkRows } from '../lib/work';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const asset = (p: string) => `${base}${p}`;
 const rows = toWorkRows(visibleProjects, base);
 
 const listSchema = {
@@ -22,31 +22,18 @@ const listSchema = {
 
 <SiteLayout
   title={`Projects · ${SITE.name}`}
-  description={`Selected work by ${SITE.name}: products taken from a rough idea to shipped, end to end.`}
+  description={`Selected work by ${SITE.name}: client products, internal tools and side projects, from first idea to launch.`}
   schema={listSchema}
 >
   <section class="section pagetop">
     <div class="wrap">
-      <div class="shead reveal"><h2>All <span class="it">projects</span></h2></div>
+      <div class="shead reveal"><h2>All projects</h2></div>
       <p class="lede reveal">
-        Everything I've built, from agentic internal tools to marketplaces and
-        RAG search. Select any project for the full write-up.
+        Client builds, internal agency tools and a side project of my own.
+        Each one has a short write-up.
       </p>
       <div class="work-grid">
-        {rows.map((p) => (
-          <a class="work-card reveal" href={p.href} style={`--c:${p.color};`}>
-            <div class="work-card__img">
-              {p.image
-                ? <img src={asset(p.image)} alt={p.title} loading="lazy" />
-                : <div class="work-card__ph"><span>{p.name}</span></div>}
-            </div>
-            <div class="work-card__body">
-              <span class="work-card__name">{p.name} <span class="arrow">↗</span></span>
-              <span class="work-card__tag">{p.audience}</span>
-            </div>
-            <p class="work-card__blurb">{p.blurb}</p>
-          </a>
-        ))}
+        {rows.map((p) => <WorkCard p={p} />)}
       </div>
     </div>
   </section>

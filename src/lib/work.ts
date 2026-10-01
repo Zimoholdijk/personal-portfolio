@@ -10,9 +10,9 @@ const palette = [
 // Short audience label shown as the row's tag.
 function audienceLabel(tags: string[]): string {
   const t = tags[0] || '';
-  if (/client/i.test(t)) return 'Client';
+  if (/client/i.test(t)) return 'Client project';
   if (/agency|internal|brthrs/i.test(t)) return 'Agency';
-  if (/personal/i.test(t)) return 'Personal';
+  if (/personal/i.test(t)) return 'Personal project';
   return t;
 }
 

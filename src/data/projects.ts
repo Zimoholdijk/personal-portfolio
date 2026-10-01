@@ -9,6 +9,8 @@ export interface Project {
   url?: string;
   repo?: string;
   image?: string; // path under /public, e.g. '/projects/myapp.png'
+  // Shown in place of a screenshot when there's no image (e.g. internal tools).
+  stat?: { value: string; label: string };
   hidden?: boolean; // when true, the project is left off the site entirely
 }
 
@@ -27,6 +29,7 @@ export const projects: Project[] = [
     slug: 'agentic-scoping-workflow',
     title: 'Agentic scoping workflow',
     blurb: 'Client intake to quote in ~20 minutes',
+    stat: { value: '~20 min', label: 'from client intake to a finished quote. It used to take days.' },
     description:
       'An agentic workflow built with Claude that takes a new client from intake to quote in about 20 minutes, work that used to take days across several people. It ingests transcripts, emails, and documents, researches the client, drafts a scoping document and presentation, pressure-tests the proposal with a simulated client stand-in, and reviews everything against brand guidelines, with one person in the loop.',
     tags: ['Agency work', 'Agentic AI', 'Claude'],
@@ -45,6 +48,7 @@ export const projects: Project[] = [
     slug: 'agency-billing-dashboard',
     title: 'Cashflow forecasting tool',
     blurb: 'Cashflow forecast from live finance data',
+    stat: { value: 'Daily', label: 'used for financial planning, built on live quotes and invoices' },
     description:
       'The agency was forecasting on stale data spread across multiple systems. I built an internal forecasting tool that integrates with our accounting software via API and pulls open quotes, signed quotes, invoices due, and invoices paid into a single cashflow forecast. Now used daily for financial planning and operational decisions.',
     tags: ['Agency work', 'Forecasting', 'API'],

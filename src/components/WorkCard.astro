@@ -1,0 +1,29 @@
+---
+import type { WorkRow } from '../lib/work';
+
+interface Props {
+  p: WorkRow;
+  feature?: boolean;
+}
+
+const { p, feature = false } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (path: string) => `${base}${path}`;
+---
+
+<a class={`work-card reveal${feature ? ' work-card--feature' : ''}`} href={p.href} style={`--c:${p.color};`}>
+  <div class="work-card__img">
+    {p.image
+      ? <img src={asset(p.image)} alt={p.title} loading="lazy" />
+      : <div class="work-card__ph">
+          {p.stat
+            ? <><span class="stat__value">{p.stat.value}</span><span class="stat__label">{p.stat.label}</span></>
+            : <span class="stat__value">{p.name}</span>}
+        </div>}
+  </div>
+  <div class="work-card__body">
+    <span class="work-card__name">{p.name} <span class="arrow">→</span></span>
+    <span class="work-card__tag">{p.audience}</span>
+  </div>
+  <p class="work-card__blurb">{p.blurb}</p>
+</a>
