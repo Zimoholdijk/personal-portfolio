@@ -28,10 +28,10 @@ export const projects: Project[] = [
   {
     slug: 'severance-calculator',
     title: 'Severance Calculator: lead generation for a Toronto paralegal firm',
-    blurb: 'Severance estimates that turn into leads',
-    stat: { value: 'Free', label: 'severance estimate that explains your rights, and brings the firm new clients' },
+    blurb: 'Severance estimates for Ontario employees',
+    image: '/projects/severance-calculator-1.png',
     description:
-      'A Toronto employment paralegal firm wanted more people to find out what they are owed after losing a job, and to get in touch when they need help. I built a severance calculator in Lovable and integrated it dynamically into their existing website, so it lives on their own pages rather than as a separate app. Visitors get an estimate of their severance and learn about their rights along the way, and the results lead naturally into contacting the firm, so the tool doubles as a steady source of new leads.',
+      'A Toronto employment paralegal firm wanted more people to find out what they are owed after losing a job, and to get in touch when they need help. I built a severance calculator in Lovable and integrated it dynamically into their existing website, so it lives on their own pages rather than as a separate app. Visitors answer ten quick questions and get an estimate of their severance under Ontario rules, learning about their rights along the way, and nothing they enter is saved. The results lead naturally into contacting the firm, so the tool doubles as a steady source of new leads.',
     tags: ['Client project', 'Lovable', 'Lead generation'],
     url: 'https://employmentparalegal.ca/EN/severance-calculator',
   },
